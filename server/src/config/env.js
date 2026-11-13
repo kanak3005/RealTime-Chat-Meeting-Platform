@@ -9,12 +9,17 @@ dotenv.config({
   path: path.resolve(currentDir, "../../../.env"),
 });
 
-const required = ["MONGODB_URI", "JWT_SECRET"];
+const REQUIRED = ["MONGODB_URI", "JWT_SECRET"];
+const missing = REQUIRED.filter((key) => !process.env[key]);
 
-for (const key of required) {
-  if (!process.env[key]) {
-    throw new Error(`Missing required environment variable: ${key}`);
-  }
+if (missing.length > 0) {
+  throw new Error(
+    `Missing required environment variables: ${missing.join(", ")}`
+  );
+}
+
+if (process.env.JWT_SECRET.length < 32) {
+  throw new Error("JWT_SECRET must be at least 32 characters long");
 }
 
 export const env = {
@@ -23,4 +28,7 @@ export const env = {
   mongoUri: process.env.MONGODB_URI,
   clientUrl: process.env.CLIENT_URL || "http://localhost:5173",
   jwtSecret: process.env.JWT_SECRET,
+  jwtExpiresDays: Number(process.env.JWT_EXPIRES_DAYS) || 7,
 };
+
+export default env;
