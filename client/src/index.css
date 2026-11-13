@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #fbf6ee;
+  --color-cream: #f4ebdd;
+  --color-sand: #e6dac6;
+  --color-terracotta: #bd4b34;
+  --color-terracotta-dark: #9c3b27;
+  --color-coral: #e8765e;
+  --color-lagoon: #3e7c79;
+  --color-lagoon-dark: #31635f;
+  --color-sage: #a3b18a;
+  --color-marigold: #e09f3e;
+  --color-charcoal: #2b2926;
+
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+
+  --shadow-card: 0 1px 2px rgba(43, 41, 38, 0.05),
+    0 10px 28px -14px rgba(43, 41, 38, 0.18);
+
+  --animate-toast-in: toast-in 0.25s ease-out;
+
+  @keyframes toast-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-ivory);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  dialog {
+    margin: auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+  }
+
+  dialog::backdrop {
+    background: rgba(43, 41, 38, 0.45);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-lagoon);
+    outline-offset: 2px;
+  }
+}

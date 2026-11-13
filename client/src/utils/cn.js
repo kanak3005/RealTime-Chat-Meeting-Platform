@@ -1,0 +1,2 @@
+export const cn = (...classes) => classes.flat().filter(Boolean).join(" ");
+//Purpose: Tailwind classes ko jodne ka chhota helper. false, null aur undefined ko ignore karta hai, isse conditional classes saaf likhi jaati hain.
