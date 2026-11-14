@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
 import { env } from "./config/env.js";
 import { notFound, errorHandler } from "./middlewares/error.middleware.js";
+import authRoutes from "./routes/auth.routes.js";
 
 export const app = express();
 
@@ -21,6 +22,8 @@ app.get("/api/health", (req, res) => {
     },
   });
 });
+
+app.use("/api/auth", authRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
