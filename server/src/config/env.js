@@ -1,16 +1,18 @@
 import dotenv from "dotenv";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath } from "node:url";//fileURLToPath() converts that URL into a normal file path.
 import path from "node:path";
 
-const currentFile = fileURLToPath(import.meta.url);
-const currentDir = path.dirname(currentFile);
+const currentFile = fileURLToPath(import.meta.url);//import.meta.url gives the URL of the current file.
+const currentDir = path.dirname(currentFile);//path.dirname() extracts the directory of that file.
+//Current file: server/src/config/env.js
+// currentDir: server/src/config
 
-dotenv.config({
-  path: path.resolve(currentDir, "../../../.env"),
+dotenv.config({//This tells dotenv where your .env file is located.
+  path: path.resolve(currentDir, "../../../.env"), //From config, we go three levels backwards to find .env. that's why we use ../../../.env
 });
 
 const REQUIRED = ["MONGODB_URI", "JWT_SECRET"];
-const missing = REQUIRED.filter((key) => !process.env[key]);
+ const missing = REQUIRED.filter((key) => !process.env[key]);//filter() checks which required variables are missing.
 
 if (missing.length > 0) {
   throw new Error(

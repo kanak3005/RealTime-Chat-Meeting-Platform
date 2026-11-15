@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import { env } from "./config/env.js";
 import { notFound, errorHandler } from "./middlewares/error.middleware.js";
 import authRoutes from "./routes/auth.routes.js";
+import meetingRoutes from "./routes/meeting.routes.js";
 
 export const app = express();
 
@@ -24,6 +25,7 @@ app.get("/api/health", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/meetings", meetingRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
