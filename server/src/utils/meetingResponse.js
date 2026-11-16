@@ -1,4 +1,5 @@
 import { MEETING_STATUS } from "../models/Meeting.js";
+import { meetingConfig } from "../config/meeting.js";
 
 const MS_PER_MINUTE = 60 * 1000;
 
@@ -24,6 +25,7 @@ export const toMeetingResponse = (meeting) => ({
   status: meeting.status,
   host: meeting.host ? toPerson(meeting.host) : null,
   participants: getVisibleParticipants(meeting),
+  maxParticipants: meeting.maxParticipants ?? meetingConfig.maxParticipants,
   scheduledAt: meeting.scheduledAt,
   startedAt: meeting.startedAt,
   endedAt: meeting.endedAt,
