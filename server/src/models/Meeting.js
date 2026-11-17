@@ -1,8 +1,7 @@
 import mongoose from "mongoose";
 import "./User.js";
-import { MEETING_CODE_REGEX } from "../utils/meetingCode.js";
-import { meetingConfig } from "../config/meeting.js";
-
+import { MEETING_CODE_REGEX } from "../utils/meetingCode.js"; 
+import { meetingConfig } from "../config/meeting.js"; // max participants per meeting iss file mein daal diye hai
 export const MEETING_STATUS = Object.freeze({
   SCHEDULED: "scheduled",
   LIVE: "live",
